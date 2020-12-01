@@ -3,14 +3,13 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["../Produtivo.Api/Produtivo.Api.csproj", "../Produtivo.Api/"]
-RUN dotnet restore "../Produtivo.Api/Produtivo.Api.csproj"
+COPY ["Produtivo.Api/Produtivo.Api.csproj", "Produtivo.Api/"]
+RUN dotnet restore "Produtivo.Api/Produtivo.Api.csproj"
 COPY . .
-WORKDIR "/src/../Produtivo.Api"
+WORKDIR "/src/Produtivo.Api"
 RUN dotnet build "Produtivo.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
