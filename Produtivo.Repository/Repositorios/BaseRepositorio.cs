@@ -1,43 +1,48 @@
 ﻿using Produtivo.Dominio.Contratos;
-using System;
+using Produtivo.Repositorio.Contexto;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Produtivo.Repositorio.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-        public BaseRepositorio()
+        protected readonly ProdutivoContexto Contexto;
+        public BaseRepositorio(ProdutivoContexto contexto)
         {
-
+            Contexto = contexto;
         }
         public void Adicionar(TEntity entity)
         {
-            throw new NotImplementedException();
+            Contexto.Set<TEntity>().Add(entity);
+            Contexto.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            throw new NotImplementedException();
+            Contexto.Set<TEntity>().Update(entity);
+            Contexto.SaveChanges();
         }
 
         public TEntity ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return Contexto.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            throw new NotImplementedException();
+            return Contexto.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            throw new NotImplementedException();
+            Contexto.Set<TEntity>().Remove(entity);
+            Contexto.SaveChanges();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Contexto.Dispose();
         }
     }
 }
