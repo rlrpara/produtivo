@@ -15,7 +15,7 @@ namespace Produtivo.Dominio.Entidades
         public DateTime? Pagamento { get; set; }
         public bool Pago { get; set; }
         public int UsuarioId { get; set; }
-        public Usuario Usuarios { get; set; }
+        public virtual Usuario Usuarios { get; set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
 

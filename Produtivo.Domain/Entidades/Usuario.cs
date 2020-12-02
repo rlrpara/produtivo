@@ -15,7 +15,7 @@ namespace Produtivo.Dominio.Entidades
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
 
-        public virtual IEnumerable<Lancamento> Lancamentos { get; set; }
+        public virtual ICollection<Lancamento> Lancamentos { get; set; }
 
         public override void Validar()
         {

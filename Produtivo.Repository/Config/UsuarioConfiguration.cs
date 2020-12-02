@@ -24,7 +24,7 @@ namespace Produtivo.Repositorio.Config
             builder
                 .Property(x => x.Senha)
                 .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(400);
 
             builder
                 .Property(x => x.Whatsapp)
@@ -46,7 +46,12 @@ namespace Produtivo.Repositorio.Config
                 .Property(x => x.UpdatedAt)
                 .HasColumnType("timestamp without time zone")
                 .HasDefaultValueSql("getutcdate()")
-                .ValueGeneratedOnAddOrUpdate(); ;
+                .ValueGeneratedOnAddOrUpdate();
+
+            builder
+                .HasMany(u => u.Lancamentos)
+                .WithOne(l => l.Usuarios)
+                .HasForeignKey(u => u.UsuarioId);
 
             builder
                 .ToTable("Usuario");

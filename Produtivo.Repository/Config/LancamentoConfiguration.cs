@@ -56,7 +56,7 @@ namespace Produtivo.Repositorio.Config
                 .Property(x => x.UpdatedAt)
                 .HasColumnType("timestamp without time zone")
                 .HasDefaultValueSql("getutcdate()")
-                .ValueGeneratedOnAddOrUpdate(); ;
+                .ValueGeneratedOnAddOrUpdate();
 
             builder
                 .ToTable("Lancamento");
