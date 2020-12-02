@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace Produtivo.Dominio.Entidades
@@ -15,6 +16,7 @@ namespace Produtivo.Dominio.Entidades
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
 
+        [HiddenInput(DisplayValue = false)]
         public virtual ICollection<Lancamento> Lancamentos { get; set; }
 
         public override void Validar()

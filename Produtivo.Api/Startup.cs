@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Produtivo.Dominio.Contratos;
 using Produtivo.Repositorio.Contexto;
+using Produtivo.Repositorio.Repositorios;
 
 namespace Produtivo.Api
 {
@@ -27,6 +29,13 @@ namespace Produtivo.Api
             services.AddDbContext<ProdutivoContexto>(option =>
                 option.UseLazyLoadingProxies()
                 .UseMySql(connectionString, m => m.MigrationsAssembly("Produtivo.Repositorio")));
+
+            services.AddScoped<IBairroRepositorio, BairroRepositorio>();
+            services.AddScoped<IEscolaridadeRepositorio, EscolaridadeRepositorio>();
+            services.AddScoped<IEstadoCivilRepositorio, EstadoCivilRepositorio>();
+            services.AddScoped<ILancamentoRepositorio, LancamentoRepositorio>();
+            services.AddScoped<ISexoRepositorio, SexoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             services.AddControllers();
         }

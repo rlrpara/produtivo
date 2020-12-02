@@ -49,11 +49,6 @@ namespace Produtivo.Repositorio.Config
                 .ValueGeneratedOnAddOrUpdate();
 
             builder
-                .HasMany(u => u.Lancamentos)
-                .WithOne(l => l.Usuarios)
-                .HasForeignKey(u => u.UsuarioId);
-
-            builder
                 .ToTable("Usuario");
 
         }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Produtivo.Repositorio.Migrations
 {
-    public partial class CriandoBases : Migration
+    public partial class CriandoBasesIniciaisECarga : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -114,6 +114,46 @@ namespace Produtivo.Repositorio.Migrations
                         principalTable: "Usuario",
                         principalColumn: "Codigo",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Escolaridade",
+                columns: new[] { "Codigo", "Descricao" },
+                values: new object[,]
+                {
+                    { 1, "Fundamental - Incompleto" },
+                    { 12, "Pós-graduação (Stricto sensu, nível doutor) - Completo" },
+                    { 11, "Pós-graduação (Stricto sensu, nível doutor) - Incompleto" },
+                    { 9, "Pós-graduação (Stricto sensu, nível mestrado) - Incompleto" },
+                    { 8, "Pós-graduação (Lato senso) - Completo" },
+                    { 7, "Pós-graduação (Lato senso) - Incompleto" },
+                    { 10, "Pós-graduação (Stricto sensu, nível mestrado) - Completo" },
+                    { 5, "Superior - Incompleto" },
+                    { 4, "Médio - Completo" },
+                    { 3, "Médio - Incompleto" },
+                    { 2, "Fundamental - Completo" },
+                    { 6, "Superior - Completo" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "EstadoCivil",
+                columns: new[] { "Codigo", "Descricao" },
+                values: new object[,]
+                {
+                    { 1, "Solteiro" },
+                    { 2, "Casado" },
+                    { 3, "Viúvo" },
+                    { 4, "Separado judicialmente" },
+                    { 5, "Divorciado" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Sexo",
+                columns: new[] { "Codigo", "Descricao" },
+                values: new object[,]
+                {
+                    { 1, "Masculino" },
+                    { 2, "Feminino" }
                 });
 
             migrationBuilder.CreateIndex(
