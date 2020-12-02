@@ -23,11 +23,12 @@ namespace Produtivo.Repositorio.Config
 
             builder
                 .Property(x => x.Vencimento)
-                .HasColumnType("timestamp without time zone");
+                .HasColumnType("TIMESTAMP")
+                .IsRequired();
 
             builder
                 .Property(x => x.EnviadoFinanceiro)
-                .HasColumnType("timestamp without time zone");
+                .HasColumnType("TIMESTAMP");
 
             builder
                 .Property(x => x.Responsavel)
@@ -35,11 +36,12 @@ namespace Produtivo.Repositorio.Config
                 .HasMaxLength(150);
 
             builder
-                .Property(x => x.Valor);
+                .Property(x => x.Valor)
+                .IsRequired();
 
             builder
                 .Property(x => x.Pagamento)
-                .HasColumnType("timestamp without time zone");
+                .HasColumnType("TIMESTAMP");
 
             builder
                 .Property(x => x.Pago)
@@ -48,14 +50,14 @@ namespace Produtivo.Repositorio.Config
 
             builder
                 .Property(x => x.CreatedAt)
-                .HasColumnType("timestamp without time zone")
-                .HasDefaultValueSql("getdate()")
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .ValueGeneratedOnAdd();
 
             builder
                 .Property(x => x.UpdatedAt)
-                .HasColumnType("timestamp without time zone")
-                .HasDefaultValueSql("getutcdate()")
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
                 .ValueGeneratedOnAddOrUpdate();
 
             builder

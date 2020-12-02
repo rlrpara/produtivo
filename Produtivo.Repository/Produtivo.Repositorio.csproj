@@ -5,8 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201202010331_Bairro.cs" />
+    <Compile Remove="Migrations\20201202010331_Bairro.Designer.cs" />
+    <Compile Remove="Migrations\20201202010516_CriandoBases.cs" />
+    <Compile Remove="Migrations\20201202010516_CriandoBases.Designer.cs" />
+    <Compile Remove="Migrations\20201202011643_CriandoBases.cs" />
+    <Compile Remove="Migrations\20201202011643_CriandoBases.Designer.cs" />
+    <Compile Remove="Migrations\20201202011803_CriandoBases.cs" />
+    <Compile Remove="Migrations\20201202011803_CriandoBases.Designer.cs" />
+    <Compile Remove="Migrations\20201202011912_CriandoBases.cs" />
+    <Compile Remove="Migrations\20201202011912_CriandoBases.Designer.cs" />
+    <Compile Remove="Migrations\20201202012307_CriandoBases.cs" />
+    <Compile Remove="Migrations\20201202012307_CriandoBases.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
   </ItemGroup>
 

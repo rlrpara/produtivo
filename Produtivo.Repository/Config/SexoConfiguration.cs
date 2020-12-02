@@ -18,14 +18,14 @@ namespace Produtivo.Repositorio.Config
 
             builder
                 .Property(x => x.CreatedAt)
-                .HasColumnType("timestamp without time zone")
-                .HasDefaultValueSql("getdate()")
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .ValueGeneratedOnAdd();
 
             builder
                 .Property(x => x.UpdatedAt)
-                .HasColumnType("timestamp without time zone")
-                .HasDefaultValueSql("getutcdate()")
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
                 .ValueGeneratedOnAddOrUpdate();
 
             builder
