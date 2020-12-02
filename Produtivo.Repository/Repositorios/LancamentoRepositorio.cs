@@ -3,7 +3,7 @@ using Produtivo.Dominio.Entidades;
 
 namespace Produtivo.Repositorio.Repositorios
 {
-    public class MunicipesRepositorio : BaseRepositorio<Municipe>, IMunicipeRepositorio
+    public class LancamentoRepositorio : BaseRepositorio<Lancamento>, ILancamentoRepositorio
     {
     }
 }

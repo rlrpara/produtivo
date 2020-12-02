@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Produtivo.Dominio.Entidades;
-using System;
 
 namespace Produtivo.Repositorio.Config
 {
@@ -10,9 +9,27 @@ namespace Produtivo.Repositorio.Config
         public void Configure(EntityTypeBuilder<Bairro> builder)
         {
             builder
-                .HasKey("id");
+                .HasKey(x => x.Codigo);
 
+            builder
+                .Property(x => x.Descricao)
+                .IsRequired()
+                .HasMaxLength(255);
 
+            builder
+                .Property(x => x.CreatedAt)
+                .HasColumnType("timestamp without time zone")
+                .HasDefaultValueSql("getdate()")
+                .ValueGeneratedOnAdd();
+
+            builder
+                .Property(x => x.UpdatedAt)
+                .HasColumnType("timestamp without time zone")
+                .HasDefaultValueSql("getutcdate()")
+                .ValueGeneratedOnAddOrUpdate(); ;
+
+            builder
+                .ToTable("Bairro");
         }
     }
 }

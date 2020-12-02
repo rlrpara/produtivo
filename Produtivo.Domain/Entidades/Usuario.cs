@@ -1,4 +1,7 @@
-﻿namespace Produtivo.Dominio.Entidades
+﻿using System;
+using System.Collections.Generic;
+
+namespace Produtivo.Dominio.Entidades
 {
     public class Usuario : Entidade
     {
@@ -9,6 +12,10 @@
         public string Senha { get; set; }
         public string Whatsapp { get; set; }
         public string Celular { get; set; }
+        public DateTime CreatedAt { get; private set; }
+        public DateTime UpdatedAt { get; private set; }
+
+        public virtual IEnumerable<Lancamento> Lancamentos { get; set; }
 
         public override void Validar()
         {

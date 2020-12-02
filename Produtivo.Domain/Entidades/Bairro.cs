@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Produtivo.Dominio.Entidades
 {
@@ -9,10 +8,8 @@ namespace Produtivo.Dominio.Entidades
         public int? Codigo { get; set; }
         public string Descricao { get; set; }
         public decimal Fator { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-
-        public virtual ICollection<Municipe> Municipe { get; set; }
+        public DateTime CreatedAt { get; private set; }
+        public DateTime UpdatedAt { get; private set; }
 
         public override void Validar()
         {

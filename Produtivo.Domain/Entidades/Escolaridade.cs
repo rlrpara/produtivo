@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace Produtivo.Dominio.Entidades
 {
@@ -7,8 +7,8 @@ namespace Produtivo.Dominio.Entidades
         public Escolaridade() {}
         public int? Codigo { get; set; }
         public string Descricao { get; set; }
-
-        public virtual ICollection<Municipe> Municipe { get; set; }
+        public DateTime CreatedAt { get; private set; }
+        public DateTime UpdatedAt { get; private set; }
 
         public override void Validar()
         {

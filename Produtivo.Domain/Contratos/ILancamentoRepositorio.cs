@@ -2,7 +2,7 @@
 
 namespace Produtivo.Dominio.Contratos
 {
-    public interface IMunicipeRepositorio : IBaseRepositorio<Municipe>
+    public interface ILancamentoRepositorio : IBaseRepositorio<Lancamento>
     {
     }
 }
