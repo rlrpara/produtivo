@@ -6,9 +6,6 @@
   Controle pessoal financeiro.
 </h3>
 
-<div align="center">
-  [![Coverage Status](https://img.shields.io/coveralls/github/Rocketseat/unform.svg?color=%237159c1)](https://coveralls.io/github/rlrpara/unform?branch=master)
-</div>
 
 <br>
 
