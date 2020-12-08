@@ -6,6 +6,10 @@
   Controle pessoal financeiro.
 </h3>
 
+<div align="center">
+  [![Coverage Status]](https://coveralls.io/github/rlrpara/unform?branch=master)
+</div>
+
 <br>
 
 ## Titulo
