@@ -3,8 +3,6 @@ using Produtivo.Dominio.Contratos;
 using Produtivo.Dominio.Entidades;
 using System;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Produtivo.Api.Controllers
 {
     [Route("api/[controller]")]
@@ -18,7 +16,6 @@ namespace Produtivo.Api.Controllers
             _bairroRepositorio = bairroRepositorio;
         }
 
-        // GET: api/<BairroController>
         [HttpGet]
         public IActionResult Get()
         {
@@ -32,7 +29,6 @@ namespace Produtivo.Api.Controllers
             }
         }
 
-        // GET api/<BairroController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -46,7 +42,6 @@ namespace Produtivo.Api.Controllers
             }
         }
 
-        // POST api/<BairroController>
         [HttpPost]
         public IActionResult Post([FromBody] Bairro bairro)
         {
@@ -61,18 +56,17 @@ namespace Produtivo.Api.Controllers
             }
         }
 
-        // PUT api/<BairroController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Bairro bairro)
         {
             try
             {
-                _bairroRepositorio.ObterPorId(id);
-                if (_bairroRepositorio.ObterPorId(id) == null)
+                Bairro bairoRepositorio = _bairroRepositorio.ObterPorId(id);
+                if (bairoRepositorio == null)
                     return NotFound();
 
-                _bairroRepositorio.Atualizar(bairro);
-                return Ok(bairro);
+                _bairroRepositorio.Atualizar(bairoRepositorio);
+                return Ok(bairoRepositorio);
             }
             catch (Exception ex)
             {
@@ -80,18 +74,17 @@ namespace Produtivo.Api.Controllers
             }
         }
 
-        // DELETE api/<BairroController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id, [FromBody] Bairro bairro)
         {
             try
             {
-                _bairroRepositorio.ObterPorId(id);
-                if (_bairroRepositorio.ObterPorId(id) == null)
+               Bairro bairroRepositorio = _bairroRepositorio.ObterPorId(id);
+                if (bairroRepositorio == null)
                     return NotFound();
 
-                _bairroRepositorio.Remover(bairro);
-                return Ok(bairro);
+                _bairroRepositorio.Remover(bairroRepositorio);
+                return Ok(bairroRepositorio);
             }
             catch (Exception ex)
             {
