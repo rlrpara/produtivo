@@ -6,6 +6,7 @@
   Controle pessoal financeiro.
 </h3>
 
+<img src="https://img.shields.io/static/v1?label=Net Core&message=v3.1&color=7159c1&style=for-the-badge&logo="/>
 
 <br>
 
