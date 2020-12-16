@@ -3,7 +3,7 @@
 </p>
 
 <h3 align="center">
-  Controle pessoal financeiro.
+  Controle financeiro e pessoal.
 </h3>
 
 <br>
