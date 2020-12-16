@@ -2,14 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Produtivo.Dominio.Contratos;
 using Produtivo.Dominio.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Produtivo.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class EscolaridadeController : ControllerBase
     {
         private readonly IEscolaridadeRepositorio _escolaridadeRepositorio;

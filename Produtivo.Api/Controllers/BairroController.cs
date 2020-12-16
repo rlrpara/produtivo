@@ -5,9 +5,9 @@ using System;
 
 namespace Produtivo.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class BairroController : Controller
+    [Route("api/[controller]")]
+    public class BairroController : ControllerBase
     {
         private readonly IBairroRepositorio _bairroRepositorio;
 

@@ -1,0 +1,6 @@
+projectKey=Produtivo
+serverUrl=http://localhost:9000
+serverVersion=8.5.1.38104
+dashboardUrl=http://localhost:9000/dashboard?id=Produtivo
+ceTaskId=AXZEAskKKmwJy1IgvMXE
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXZEAskKKmwJy1IgvMXE

@@ -1,0 +1,1 @@
+sonar-scanner -D"sonar.projectKey=Produtivo" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=0add906eea87ac93f505de8ff114f389097f07a6"

@@ -5,9 +5,9 @@ using System;
 
 namespace Produtivo.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : Controller
+    [Route("api/[controller]")]
+    public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
@@ -28,7 +28,7 @@ namespace Produtivo.Api.Controllers
             }
         }
 
-        [HttpGet("{id)")]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try
@@ -42,12 +42,28 @@ namespace Produtivo.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Usuario usuario)
+        public IActionResult Post([FromBody] Usuario usuario)
         {
             try
             {
                 _usuarioRepositorio.Adicionar(usuario);
                 return Created("api/usuario", usuario);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpPost("VerificarUsuario")]
+        public IActionResult VerificarUsuario([FromBody] Usuario usuario)
+        {
+            try
+            {
+                if (usuario.Email == "rlr.para@gmail.com" && usuario.Senha == "123")
+                    return Ok(usuario);
+
+                return BadRequest("Usuário ou senha inválidos");
             }
             catch (Exception ex)
             {

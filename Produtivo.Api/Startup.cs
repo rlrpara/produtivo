@@ -16,19 +16,14 @@ namespace Produtivo.Api
 
         public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("config.json", optional: false, reloadOnChange: true);
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("ProdutivoDb");
-
-            services.AddDbContext<ProdutivoContexto>(option =>
-                option.UseLazyLoadingProxies()
-                .UseMySql(connectionString, m => m.MigrationsAssembly("Produtivo.Repositorio")));
+            services.AddDbContext<ProdutivoContexto>(
+                option => option.UseMySql(Configuration.GetConnectionString("ProdutivoDb"))
+            );
 
             services.AddScoped<IBairroRepositorio, BairroRepositorio>();
             services.AddScoped<IEscolaridadeRepositorio, EscolaridadeRepositorio>();
@@ -50,7 +45,7 @@ namespace Produtivo.Api
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
