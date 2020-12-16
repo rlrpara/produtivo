@@ -17,11 +17,5 @@
     <ProjectReference Include="..\Produtivo.Repository\Produtivo.Repositorio.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 
 </Project>
