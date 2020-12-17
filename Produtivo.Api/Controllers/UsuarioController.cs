@@ -48,8 +48,13 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                _usuarioRepository.Add(usuario);
-                return Created("api/usuario", usuario);
+                if (ModelState.IsValid)
+                {
+                    _usuarioRepository.Add(usuario);
+                    return Created("api/usuario", usuario);
+                }
+
+                return BadRequest("Classe inválida");
             }
             catch (Exception ex)
             {
@@ -78,12 +83,16 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                if (_usuarioRepository.Get(id) == null)
-                    return NotFound();
+                if (ModelState.IsValid)
+                {
+                    if (_usuarioRepository.Get(id) == null) return NotFound();
 
-                _usuarioRepository.Update(usuario);
+                    _usuarioRepository.Update(usuario);
 
-                return Ok(_usuarioRepository.Get(id));
+                    return Ok(_usuarioRepository.Get(id));
+                }
+
+                return BadRequest("Classe inválida");
             }
             catch (Exception ex)
             {
