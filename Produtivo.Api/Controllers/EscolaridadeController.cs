@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Produtivo.Dominio.Contratos;
-using Produtivo.Dominio.Entidades;
+using Produtivo.Domain.Interface;
+using Produtivo.Domain.Entities;
 using System;
 
 namespace Produtivo.Api.Controllers
@@ -9,9 +9,9 @@ namespace Produtivo.Api.Controllers
     [Route("api/[controller]")]
     public class EscolaridadeController : ControllerBase
     {
-        private readonly IEscolaridadeRepositorio _escolaridadeRepositorio;
+        private readonly IEscolaridadeRepository _escolaridadeRepositorio;
 
-        public EscolaridadeController(IEscolaridadeRepositorio escolaridadeRepositorio)
+        public EscolaridadeController(IEscolaridadeRepository escolaridadeRepositorio)
         {
             _escolaridadeRepositorio = escolaridadeRepositorio;
         }
@@ -21,7 +21,7 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                return Ok(_escolaridadeRepositorio.ObterTodos());
+                return Ok(_escolaridadeRepositorio.GetAll());
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                Escolaridade escolaridadeRepositorio = _escolaridadeRepositorio.ObterPorId(id);
+                Escolaridade escolaridadeRepositorio = _escolaridadeRepositorio.Get(id);
 
                 if (escolaridadeRepositorio == null)
                     return NotFound();
@@ -54,7 +54,7 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                _escolaridadeRepositorio.Adicionar(escolaridade);
+                _escolaridadeRepositorio.Add(escolaridade);
                 return Created("api/escolaridade", escolaridade);
             }
             catch (Exception ex)

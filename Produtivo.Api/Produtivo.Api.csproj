@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Produtivo.Repository\Produtivo.Repositorio.csproj" />
+    <ProjectReference Include="..\Produtivo.Repository\Produtivo.Repository.csproj" />
   </ItemGroup>
 
 

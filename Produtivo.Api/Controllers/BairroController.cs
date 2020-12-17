@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Produtivo.Dominio.Contratos;
-using Produtivo.Dominio.Entidades;
+using Produtivo.Domain.Interface;
+using Produtivo.Domain.Entities;
 using System;
 
 namespace Produtivo.Api.Controllers
@@ -9,9 +9,9 @@ namespace Produtivo.Api.Controllers
     [Route("api/[controller]")]
     public class BairroController : ControllerBase
     {
-        private readonly IBairroRepositorio _bairroRepositorio;
+        private readonly IBairroRepository _bairroRepositorio;
 
-        public BairroController(IBairroRepositorio bairroRepositorio)
+        public BairroController(IBairroRepository bairroRepositorio)
         {
             _bairroRepositorio = bairroRepositorio;
         }
@@ -21,7 +21,7 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                return Ok(_bairroRepositorio.ObterTodos());
+                return Ok(_bairroRepositorio.GetAll());
             }
             catch (Exception ex)
             {
@@ -34,7 +34,7 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                return Ok(_bairroRepositorio.ObterPorId(id));
+                return Ok(_bairroRepositorio.Get(id));
             }
             catch (Exception Ex)
             {
@@ -47,7 +47,7 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                _bairroRepositorio.Adicionar(bairro);
+                _bairroRepositorio.Add(bairro);
                 return Created("api/bairro", bairro);
             }
             catch (Exception ex)
@@ -61,11 +61,11 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                Bairro bairoRepositorio = _bairroRepositorio.ObterPorId(id);
+                Bairro bairoRepositorio = _bairroRepositorio.Get(id);
                 if (bairoRepositorio == null)
                     return NotFound();
 
-                _bairroRepositorio.Atualizar(bairoRepositorio);
+                _bairroRepositorio.Update(bairoRepositorio);
                 return Ok(bairoRepositorio);
             }
             catch (Exception ex)
@@ -79,11 +79,11 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-               Bairro bairroRepositorio = _bairroRepositorio.ObterPorId(id);
+               Bairro bairroRepositorio = _bairroRepositorio.Get(id);
                 if (bairroRepositorio == null)
                     return NotFound();
 
-                _bairroRepositorio.Remover(bairroRepositorio);
+                _bairroRepositorio.Remove(bairroRepositorio);
                 return Ok(bairroRepositorio);
             }
             catch (Exception ex)

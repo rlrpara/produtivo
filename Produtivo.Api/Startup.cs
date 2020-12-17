@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Produtivo.Dominio.Contratos;
-using Produtivo.Repositorio.Contexto;
-using Produtivo.Repositorio.Repositorios;
+using Produtivo.Domain.Interface;
+using Produtivo.Repository.Repository;
 
 namespace Produtivo.Api
 {
@@ -21,16 +19,14 @@ namespace Produtivo.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProdutivoContexto>(
-                option => option.UseMySql(Configuration.GetConnectionString("ProdutivoDb"))
-            );
+            services.AddSingleton<IConfiguration>(Configuration);
 
-            services.AddScoped<IBairroRepositorio, BairroRepositorio>();
-            services.AddScoped<IEscolaridadeRepositorio, EscolaridadeRepositorio>();
-            services.AddScoped<IEstadoCivilRepositorio, EstadoCivilRepositorio>();
-            services.AddScoped<ILancamentoRepositorio, LancamentoRepositorio>();
-            services.AddScoped<ISexoRepositorio, SexoRepositorio>();
-            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddScoped<IBairroRepository, BairroRepository>();
+            services.AddScoped<IEscolaridadeRepository, EscolaridadeRepository>();
+            services.AddScoped<IEstadoCivilRepository, EstadoCivilRepository>();
+            services.AddScoped<ILancamentoRepository, LancamentoRepository>();
+            services.AddScoped<ISexoRepository, SexoRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services.AddControllers();
         }

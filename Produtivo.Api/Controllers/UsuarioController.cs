@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Produtivo.Dominio.Contratos;
-using Produtivo.Dominio.Entidades;
+using Produtivo.Domain.Interface;
+using Produtivo.Domain.Entities;
 using System;
 
 namespace Produtivo.Api.Controllers
@@ -9,10 +9,10 @@ namespace Produtivo.Api.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
-        private readonly IUsuarioRepositorio _usuarioRepositorio;
-        public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+        private readonly IUsuarioRepository _usuarioRepository;
+        public UsuarioController(IUsuarioRepository usuarioRepositorio)
         {
-            _usuarioRepositorio = usuarioRepositorio;
+            _usuarioRepository = usuarioRepositorio;
         }
 
         [HttpGet]
@@ -20,7 +20,9 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                return Ok(_usuarioRepositorio.ObterTodos());
+                var usuarios = _usuarioRepository.GetAll();
+
+                return Ok(usuarios);
             }
             catch (Exception ex)
             {
@@ -33,7 +35,7 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                return Ok(_usuarioRepositorio.ObterPorId(id));
+                return Ok(_usuarioRepository.Get(id));
             }
             catch (Exception ex)
             {
@@ -46,7 +48,7 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                _usuarioRepositorio.Adicionar(usuario);
+                _usuarioRepository.Add(usuario);
                 return Created("api/usuario", usuario);
             }
             catch (Exception ex)
@@ -76,12 +78,12 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                Usuario usuarioRepositorio = _usuarioRepositorio.ObterPorId(id);
+                Usuario usuarioRepositorio = _usuarioRepository.Get(id);
 
                 if (usuarioRepositorio == null)
                     return NotFound();
 
-                _usuarioRepositorio.Atualizar(usuarioRepositorio);
+                _usuarioRepository.Update(usuarioRepositorio);
                 return Ok(usuarioRepositorio);
             }
             catch (Exception ex)
@@ -95,12 +97,12 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                Usuario usuarioRepositorio = _usuarioRepositorio.ObterPorId(id);
+                Usuario usuarioRepositorio = _usuarioRepository.Get(id);
 
                 if (usuarioRepositorio == null)
                     return NotFound();
 
-                _usuarioRepositorio.Remover(usuarioRepositorio);
+                _usuarioRepository.Remove(usuarioRepositorio);
                 return Ok(usuarioRepositorio);
             }
             catch (Exception ex)
