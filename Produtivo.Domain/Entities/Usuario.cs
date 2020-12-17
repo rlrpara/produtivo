@@ -1,11 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Produtivo.Domain.Entities
 {
     [Table("Usuario")]
-    public class Usuario : EntityBase<int>
+    public class Usuario
     {
+        [Key]
+        [Column( "Codigo")]
+        public int Codigo { get; set; }
+
         [Required]
         [Column("Nome")]
         public string Nome { get; set; }
@@ -29,5 +34,11 @@ namespace Produtivo.Domain.Entities
         [Column("Whatsapp")]
         [DataType(DataType.PhoneNumber)]
         public string Celular { get; set; }
+
+        [Column("CreatedAt")]
+        public DateTime DataCadastro { get; set; }
+
+        [Column("UpdatedAt")]
+        public DateTime DataAtualizacao { get; set; }
     }
 }

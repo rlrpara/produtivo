@@ -9,11 +9,5 @@ namespace Produtivo.Domain.Entities
         [Key]
         [Column(name: "Codigo")]
         public T Codigo { get; set; }
-
-        [Column(name: "CreatedAt")]
-        public DateTime DataCadastro { get; private set; }
-
-        [Column(name: "UpdatedAt")]
-        public DateTime DataAtualizacao { get; private set; }
     }
 }

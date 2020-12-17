@@ -78,13 +78,12 @@ namespace Produtivo.Api.Controllers
         {
             try
             {
-                Usuario usuarioRepositorio = _usuarioRepository.Get(id);
-
-                if (usuarioRepositorio == null)
+                if (_usuarioRepository.Get(id) == null)
                     return NotFound();
 
-                _usuarioRepository.Update(usuarioRepositorio);
-                return Ok(usuarioRepositorio);
+                _usuarioRepository.Update(usuario);
+
+                return Ok(_usuarioRepository.Get(id));
             }
             catch (Exception ex)
             {
