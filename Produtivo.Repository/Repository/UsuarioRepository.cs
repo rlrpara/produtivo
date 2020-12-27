@@ -52,6 +52,30 @@ namespace Produtivo.Repository.Repository
             return conn.Query<Usuario>(sqlPesquisa.ToString()).FirstOrDefault();
         }
 
+        public Login logar(Login login)
+        {
+            var pam = new DynamicParameters();
+
+            pam.Add("@Email", login.Email);
+            pam.Add("@Senha", login.Senha);
+
+            var sqlPesquisa = new StringBuilder();
+
+            sqlPesquisa.AppendLine("SELECT Codigo,");
+            sqlPesquisa.AppendLine("       Nome,");
+            sqlPesquisa.AppendLine("       Email,");
+            sqlPesquisa.AppendLine("       Senha,");
+            sqlPesquisa.AppendLine("       Whatsapp,");
+            sqlPesquisa.AppendLine("       Celular,");
+            sqlPesquisa.AppendLine("       CreatedAt as DataCadastro,");
+            sqlPesquisa.AppendLine("       UpdatedAt as DataAtualizacao");
+            sqlPesquisa.AppendLine("  FROM Usuario");
+            sqlPesquisa.AppendLine($"WHERE Email = @Email AND Senha = @Senha");
+
+            using MySqlConnection conn = new MySqlConnection(GetConnection());
+            return conn.Query<Login>(sqlPesquisa.ToString(), pam).FirstOrDefault();
+        }
+
         public IEnumerable<Usuario> GetAll()
         {
             var sqlPesquisa = new StringBuilder();

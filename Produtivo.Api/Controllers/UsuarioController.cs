@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Produtivo.Domain.Interface;
 using Produtivo.Domain.Entities;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Produtivo.Api.Controllers
 {
@@ -16,6 +17,7 @@ namespace Produtivo.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             try
@@ -31,6 +33,7 @@ namespace Produtivo.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id)
         {
             try
@@ -44,6 +47,7 @@ namespace Produtivo.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] Usuario usuario)
         {
             try
@@ -63,6 +67,7 @@ namespace Produtivo.Api.Controllers
         }
 
         [HttpPost("VerificarUsuario")]
+        [Authorize]
         public IActionResult VerificarUsuario([FromBody] Usuario usuario)
         {
             try
@@ -79,6 +84,7 @@ namespace Produtivo.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, [FromBody] Usuario usuario)
         {
             try
@@ -101,6 +107,7 @@ namespace Produtivo.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

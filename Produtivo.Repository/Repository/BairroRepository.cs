@@ -1,11 +1,14 @@
-﻿using Produtivo.Domain.Entities;
+﻿using Microsoft.Extensions.Configuration;
+using Produtivo.Domain.Entities;
 using Produtivo.Domain.Interface;
 using System.Collections.Generic;
 
 namespace Produtivo.Repository.Repository
 {
-    public class BairroRepository : IBairroRepository
+    public class BairroRepository : RepositoryConnector, IBairroRepository
     {
+        public BairroRepository(IConfiguration configuration) : base(configuration) { }
+
         public void Add(Bairro entity)
         {
             throw new System.NotImplementedException();
