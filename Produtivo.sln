@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Produtivo.Repository", "Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Produtivo.Api", "Produtivo.Api\Produtivo.Api.csproj", "{2674F7FA-B1F6-4A58-8A8E-13A53E80781E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Web", "01 - Web", "{F9AF88C0-0DFF-4E53-A4CB-1A81A1D44E5A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - WebApi", "02 - WebApi", "{F9AF88C0-0DFF-4E53-A4CB-1A81A1D44E5A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Dominio", "02 - Dominio", "{8029F80E-8697-4313-868D-329A58AD0812}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Dominio", "03 - Dominio", "{8029F80E-8697-4313-868D-329A58AD0812}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Repositorio", "03 - Repositorio", "{23BF7549-08FC-4406-81E4-7FE8CB9E6A01}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Repositorio", "04 - Repositorio", "{23BF7549-08FC-4406-81E4-7FE8CB9E6A01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Web", "01 - Web", "{DCB71DE5-A44F-4BA2-A4A5-02853404A6ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
