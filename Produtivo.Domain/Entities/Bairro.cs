@@ -8,6 +8,7 @@ namespace Produtivo.Domain.Entities
     {
         [Required]
         [Column(name: "Descricao")]
-        public string Descricao { get; set; }
+        [Display(Name = "Descrição")]
+        public string DescricaoBairro { get; set; }
     }
 }
